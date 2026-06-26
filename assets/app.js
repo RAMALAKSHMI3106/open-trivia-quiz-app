@@ -16,7 +16,6 @@ const resultsBox = document.getElementById('results-box');
 const finalScore = document.getElementById('final-score');
 const restartBtn = document.getElementById('restart-btn');
 
-// NEW: Grab the start container and button elements from HTML
 const startBox = document.getElementById('start-box');
 const startBtn = document.getElementById('start-btn');
 
@@ -25,20 +24,15 @@ function decodeHtmlEntities(htmlStr) {
     textarea.innerHTML = htmlStr;
     return textarea.value;
 }
-
-// MODIFIED: This initiates only the setups, without firing network requests yet
 function initAppLayout() {
     const savedHighScore = localStorage.getItem('quizHighScore') || 0;
     highScoreDisplay.textContent = savedHighScore;
-    
-    // Ensure game and result sections stay hidden on load
     quizBox.classList.add('hidden');
     resultsBox.classList.add('hidden');
     startBox.classList.remove('hidden');
 }
  
 async function loadQuizData() {
-    // Hide the starter container and reveal the quiz skeleton panel
     startBox.classList.add('hidden');
     resultsBox.classList.add('hidden');
     quizBox.classList.remove('hidden');
@@ -64,7 +58,7 @@ async function loadQuizData() {
         
         renderQuestion();
     } catch (error) {
-        // Fallback: If network drops, use local offline arrays instantly
+    
         console.warn("API offline or blocked. Running fallback local mock system.", error);
         
         questions = [
@@ -195,10 +189,7 @@ function displayFinalResults() {
         highScoreDisplay.textContent = score;
     }
 }
-
-// NEW: Event listener hooking up the primary start action trigger
 startBtn.addEventListener('click', loadQuizData);
 restartBtn.addEventListener('click', loadQuizData);
 
-// MODIFIED: Fire layout configurations instead of starting the game automatically
 initAppLayout();

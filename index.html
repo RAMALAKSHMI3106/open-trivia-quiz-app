@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz App</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <div class="stat-box">Score: <span id="current-score">0</span></div>
+            <div class="timer-box">Time Left: <span id="timer-display">15</span>s</div>
+            <div class="stat-box">High Score: <span id="high-score-display">0</span></div>
+        </div>
+        <div class="progress-bar-container">
+            <div id="progress-bar"></div>
+        </div>
+        <div id="start-box" class="start-screen">
+          <h2>Welcome to the Trivia Quiz!</h2>
+          <p>Test your knowledge with 10 random questions.</p>
+          <button id="start-btn">Start Quiz</button>
+        </div>
+        <div id="quiz-box" class="hidden">
+           <h2 id="question-text">Loading trivia questions...</h2>
+           <div id="choices-container" class="choices-grid"></div>
+        </div>
+        <div id="results-box" class="hidden">
+            <h2>Quiz Complete!</h2>
+            <p>Your Final Score is <span id="final-score">0</span> points.</p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <script src="assets/app.js"></script>
+</body>
+</html>
